@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Our Products - MyShop</title>
+</head>
+
+<body style="margin:0; font-family:Arial; background:linear-gradient(to right,#f8fbff,#e6f0ff);">
+
+<!-- Top Header -->
+<div style="background:#1a2a6c; padding:15px 30px; color:white; display:flex; justify-content:space-between; align-items:center;">
+
+    <h2 style="margin:0;">🛒 MyShop</h2>
+
+    <div>
+        <a href="/cart" style="text-decoration:none;">
+            <button style="padding:8px 15px; background:#28a745; color:white; border:none; border-radius:20px; cursor:pointer; font-weight:bold;">
+                View Cart
+            </button>
+        </a>
+
+        <a href="/orders" style="text-decoration:none;">
+            <button style="padding:8px 15px; background:#ff9800; color:white; border:none; border-radius:20px; cursor:pointer; font-weight:bold; margin-left:10px;">
+                My Orders
+            </button>
+        </a>
+    </div>
+
+</div>
+
+<br>
+
+<h2 style="text-align:center; color:#333;">📦 Our Products</h2>
+
+<br>
+
+<!-- Products Grid -->
+<div style="width:90%; margin:auto; display:flex; flex-wrap:wrap; justify-content:center; gap:25px;">
+
+{% for product in products %}
+
+<div style="
+    background:white;
+    width:220px;
+    padding:20px;
+    border-radius:15px;
+    text-align:center;
+    box-shadow:0 6px 18px rgba(0,0,0,0.1);
+    transition:0.3s;
+">
+
+    <img src="{{ url_for('static', filename=product.image) }}"
+         width="160" height="140"
+         style="object-fit:contain; margin-bottom:10px;">
+
+    <h3 style="margin:5px 0; color:#333;">{{ product.name }}</h3>
+
+    <p style="color:#28a745; font-weight:bold; font-size:16px;">
+        ₹{{ product.price }}
+    </p>
+
+    <a href="/product/{{ product.id }}">
+    <button style="padding:6px 12px; background:#007bff; color:white; border:none; border-radius:20px; cursor:pointer; margin-bottom:5px;">
+        View Details
+    </button>
+</a>
+
+    <a href="/add_to_cart/{{ product.id }}">
+        <button style="
+            padding:8px 15px;
+            background:#28a745;
+            color:white;
+            border:none;
+            border-radius:20px;
+            cursor:pointer;
+            font-weight:bold;
+        ">
+            Add to Cart
+        </button>
+    </a>
+
+</div>
+
+{% endfor %}
+
+</div>
+
+<br><br>
+
+</body>
+</html>

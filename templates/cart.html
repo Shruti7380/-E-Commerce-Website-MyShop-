@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Your Cart - Smart Shop</title>
+</head>
+
+<body style="margin:0; font-family:Arial; background:linear-gradient(to right,#f8fbff,#e6f0ff);">
+<div style="background:#1a2a6c; padding:15px 30px; color:white; display:flex; justify-content:space-between; align-items:center;">
+
+    <h2 style="margin:0;">🛒 MyShop</h2>
+
+</div>
+
+<div style="width:600px; margin:60px auto; background:white; padding:30px; border-radius:12px; box-shadow:0px 5px 15px rgba(0,0,0,0.2);">
+
+    <h2 style="text-align:center; margin-bottom:30px;">🛒 Your Cart</h2>
+
+    {% if items %}
+
+        {% for item in items %}
+
+        <div style="padding:15px; border-bottom:1px solid #ddd; margin-bottom:15px;">
+
+            <div style="display:flex; align-items:center;">
+
+                <!-- Product Image -->
+                <img src="{{ url_for('static', filename=item['image']) }}"
+                     width="90" height="90"
+                     style="border-radius:8px; margin-right:20px; object-fit:cover;">
+
+                <div style="flex:1;">
+
+                    <h3 style="margin:0;">{{ item['name'] }}</h3>
+
+                    <p style="margin:5px 0; color:#16a085; font-weight:bold;">
+                        ₹{{ item['price'] }}
+                    </p>
+
+                    <!-- Quantity Controls -->
+                    <div style="margin:10px 0;">
+
+                        <a href="/decrease/{{ item['id'] }}"
+                           style="background:#e74c3c;
+                                  color:white;
+                                  padding:5px 12px;
+                                  border-radius:5px;
+                                  text-decoration:none;
+                                  font-weight:bold;">
+                           -
+                        </a>
+
+                        <span style="margin:0 15px; font-size:16px;">
+                            {{ item['quantity'] }}
+                        </span>
+
+                        <a href="/increase/{{ item['id'] }}"
+                           style="background:#27ae60;
+                                  color:white;
+                                  padding:5px 12px;
+                                  border-radius:5px;
+                                  text-decoration:none;
+                                  font-weight:bold;">
+                           +
+                        </a>
+
+                    </div>
+
+                    <p style="margin:5px 0;">
+                        Subtotal: <b>₹{{ item['subtotal'] }}</b>
+                    </p>
+
+                </div>
+            </div>
+
+        </div>
+
+        {% endfor %}
+
+        <!-- TOTAL SECTION -->
+        <div style="text-align:right; font-size:18px; font-weight:bold; margin-top:20px;">
+            Total: ₹{{ total }}
+        </div>
+
+        <!-- Buttons -->
+        <div style="text-align:center; margin-top:25px;">
+
+            <a href="/checkout"
+               style="background:#16a085;
+                      color:white;
+                      padding:10px 25px;
+                      border-radius:6px;
+                      text-decoration:none;
+                      margin-right:10px;
+                      display:inline-block;">
+               Proceed to Checkout
+            </a>
+
+            <a href="/products"
+               style="background:#3498db;
+                      color:white;
+                      padding:10px 25px;
+                      border-radius:6px;
+                      text-decoration:none;
+                      display:inline-block;">
+               Continue Shopping
+            </a>
+
+        </div>
+
+    {% else %}
+
+        <p style="text-align:center; font-size:18px;">
+            Your cart is empty 🛒
+        </p>
+
+        <div style="text-align:center; margin-top:20px;">
+            <a href="/products"
+               style="background:#3498db;
+                      color:white;
+                      padding:10px 25px;
+                      border-radius:6px;
+                      text-decoration:none;">
+               Start Shopping
+            </a>
+        </div>
+
+    {% endif %}
+
+</div>
+
+</body>
+</html>

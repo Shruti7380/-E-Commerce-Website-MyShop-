@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Register - Smart Shop</title>
+</head>
+
+<body style="margin:0; font-family:Arial; background:linear-gradient(to right, #667eea, #764ba2);">
+
+    <div style="background:#1a2a6c; padding:15px 30px; color:white; display:flex; justify-content:space-between; align-items:center;">
+
+    <h2 style="margin:0;">🛒 MyShop</h2>
+
+</div>
+
+    <div style="width:400px; margin:100px auto; background:white; 
+                padding:30px; border-radius:12px; 
+                box-shadow:0px 0px 15px rgba(0,0,0,0.3); text-align:center;">
+
+        <h2 style="color:#667eea;">📝 Create Account</h2>
+
+        <form method="POST">
+
+            <input type="text" name="username" placeholder="Enter Username" required
+                   style="width:90%; padding:10px; margin:10px 0;
+                   border-radius:5px; border:1px solid #ccc;"><br>
+
+            <input type="password" name="password" placeholder="Enter Password" required
+                   style="width:90%; padding:10px; margin:10px 0;
+                   border-radius:5px; border:1px solid #ccc;"><br>
+
+            <button type="submit"
+                    style="width:95%; padding:10px;
+                    background:#667eea; color:white;
+                    border:none; border-radius:5px;
+                    font-size:16px; cursor:pointer;">
+                Register
+            </button>
+
+        </form>
+
+        {% if message %}
+            <p style="color:red; font-weight:bold;">{{ message }}</p>
+        {% endif %}
+
+        <br>
+
+        <p>
+            Already have an account?
+            <a href="/login" style="color:#667eea; text-decoration:none;">
+                Login Here
+            </a>
+        </p>
+
+    </div>
+
+</body>
+</html>

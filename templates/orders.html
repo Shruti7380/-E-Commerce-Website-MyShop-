@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>My Orders - MyShop</title>
+</head>
+
+<body style="margin:0; font-family:Arial; background:linear-gradient(to right,#f8f9fa,#e3f2fd);">
+
+<!-- Header -->
+<div style="background:#0f1111; padding:15px 30px; color:white;">
+    <h2 style="margin:0;">📦 My Orders</h2>
+</div>
+
+<br><br>
+
+<div style="width:80%; margin:auto;">
+
+<div style="
+    background:white;
+    padding:30px;
+    border-radius:15px;
+    box-shadow:0 8px 20px rgba(0,0,0,0.1);
+">
+
+<h2 style="text-align:center;">🧾 Order History</h2>
+
+<br>
+
+<table width="100%" cellpadding="10" style="border-collapse:collapse; text-align:center;">
+
+<tr style="background:#f2f2f2; font-weight:bold;">
+    <th>Product</th>
+    <th>Price</th>
+    <th>Quantity</th>
+    <th>Total</th>
+</tr>
+
+{% for order in orders %}
+<tr style="border-bottom:1px solid #ddd;">
+    <td>{{ order.product_name }}</td>
+    <td>₹{{ order.price }}</td>
+    <td>{{ order.quantity }}</td>
+    <td style="color:#28a745; font-weight:bold;">
+        ₹{{ order.price * order.quantity }}
+    </td>
+</tr>
+{% endfor %}
+
+</table>
+
+<br>
+
+</div>
+
+</div>
+
+<br><br>
+
+</body>
+</html>

@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Admin Dashboard</title>
+</head>
+<body style="font-family:Arial; padding:30px; background:#eef7ff;">
+
+<h1>Owner Dashboard</h1>
+
+<h2>Customer Orders</h2>
+
+<table border="1" cellpadding="10">
+<tr>
+    <th>Product</th>
+    <th>Price</th>
+    <th>Quantity</th>
+</tr>
+
+{% for order in orders %}
+<tr>
+    <td>{{ order.name }}</td>
+    <td>₹{{ order.price }}</td>
+    <td>{{ order.quantity }}</td>
+</tr>
+{% endfor %}
+
+</table>
+
+</body>
+</html>
